@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beer Passport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="title-row">
+    <h1>The Beer <em>Passport</em></h1>
+    <span class="favourite-chip" id="favourite-chip" hidden>★ Current favourite: <span id="favourite-name"></span></span>
+  </div>
+  <p class="stats-line" id="stats-line">Loading...</p>
+</header>
+
+<section class="passport">
+  <p class="passport-label">Stamped countries — tap to filter</p>
+  <div class="stamp-strip" id="stamp-strip"></div>
+</section>
+
+<section class="filters">
+  <input type="search" id="search" placeholder="Search beers, breweries, tasting notes...">
+  <select id="filter-style"><option value="">All styles</option></select>
+  <select id="filter-status">
+    <option value="">Tried &amp; want to try</option>
+    <option value="Tried">Tried</option>
+    <option value="Want to try">Want to try</option>
+  </select>
+  <button class="clear" id="clear-filters">Clear filters</button>
+</section>
+
+<main class="list" id="beer-list"></main>
+
+<footer>Kieron's beer guide — updated automatically from Notion.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
