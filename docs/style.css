@@ -1,0 +1,289 @@
+:root {
+  --bg: #1b140d;
+  --bg-raised: #241b12;
+  --paper: #efe4cc;
+  --paper-dim: #e4d7b8;
+  --ink: #2a1b0f;
+  --ink-soft: #5a4632;
+  --cream: #f3e9d2;
+  --cream-dim: #c9bda3;
+  --amber: #c68a2e;
+  --amber-bright: #e0a94a;
+  --hop: #6b7a3a;
+  --rust: #a34a28;
+  --line: #3a2d1d;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, .display {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+/* ---------- header ---------- */
+
+header.masthead {
+  padding: 2.5rem 1.5rem 1.75rem;
+  max-width: 960px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--line);
+}
+
+header.masthead .title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+header.masthead h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  color: var(--cream);
+}
+
+header.masthead h1 em {
+  font-style: italic;
+  color: var(--amber-bright);
+}
+
+.stats-line {
+  margin-top: 0.6rem;
+  color: var(--cream-dim);
+  font-size: 0.95rem;
+}
+
+.favourite-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--amber);
+  color: var(--amber-bright);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* ---------- passport strip ---------- */
+
+.passport {
+  max-width: 960px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.passport-label {
+  font-size: 0.8rem;
+  text-transform: none;
+  color: var(--cream-dim);
+  margin-bottom: 0.6rem;
+}
+
+.stamp-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.stamp {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--paper-dim);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stamp:hover { transform: rotate(0deg) translateY(-1px); }
+
+.stamp.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--ink);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+}
+
+.stamp .flag { font-size: 1.1rem; }
+.stamp .count {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.stamp.active .count { color: var(--ink); }
+
+/* ---------- filters ---------- */
+
+.filters {
+  max-width: 960px;
+  margin: 1.75rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filters input[type="search"],
+.filters select {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.filters input[type="search"] { flex: 1 1 180px; }
+
+.filters button.clear {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--cream-dim);
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.filters button.clear:hover { color: var(--cream); border-color: var(--cream-dim); }
+
+/* ---------- beer list ---------- */
+
+main.list {
+  max-width: 960px;
+  margin: 1.25rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.beer-row {
+  background: var(--paper);
+  color: var(--ink);
+  border-left: 6px solid var(--style-color, var(--amber));
+  border-radius: var(--radius);
+  margin-bottom: 0.55rem;
+  overflow: hidden;
+}
+
+.beer-row summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+}
+
+.beer-row summary::-webkit-details-marker { display: none; }
+
+.beer-name {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.beer-name .fave { color: var(--rust); margin-right: 0.35rem; }
+
+.beer-meta {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.beer-rating {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  min-width: 2.2rem;
+  text-align: right;
+}
+
+.beer-rating.pending {
+  color: var(--rust);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.beer-details {
+  padding: 0 1rem 1.1rem;
+  border-top: 1px solid var(--paper-dim);
+  padding-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.7rem 1.2rem;
+  font-size: 0.88rem;
+}
+
+.beer-details .field-label {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.beer-details .writeup {
+  grid-column: 1 / -1;
+  border-top: 1px dashed var(--paper-dim);
+  padding-top: 0.7rem;
+  margin-top: 0.2rem;
+  line-height: 1.6;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  background: var(--bg);
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--cream-dim);
+  padding: 3rem 1rem;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--cream-dim);
+  font-size: 0.8rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .beer-row summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "name rating" "meta meta";
+  }
+  .beer-name { grid-area: name; }
+  .beer-rating, .beer-rating.pending { grid-area: rating; }
+  .beer-meta { grid-area: meta; }
+}
