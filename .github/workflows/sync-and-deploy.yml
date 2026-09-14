@@ -33,6 +33,7 @@ jobs:
         run: |
           git config user.name "beer-guide-bot"
           git config user.email "actions@github.com"
-          git add docs/data.json docs/images
+          git add docs/data.json
+          if [ -d docs/images ]; then git add docs/images; fi
           git diff --quiet --cached || git commit -m "Sync beer data from Notion"
           git push
