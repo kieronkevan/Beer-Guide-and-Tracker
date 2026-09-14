@@ -9,7 +9,7 @@
 
 import fs from "node:fs/promises";
 
-const NOTION_VERSION = "2022-06-28";
+const NOTION_VERSION = "2025-09-03";
 const TOKEN = process.env.NOTION_TOKEN;
 
 async function notionFetch(path, options = {}) {
@@ -30,11 +30,12 @@ async function notionFetch(path, options = {}) {
 }
 
 async function queryAll(dataSourceId) {
+  const cleanId = (dataSourceId || "").trim().toLowerCase();
   let results = [];
   let cursor = undefined;
   do {
     const body = cursor ? { start_cursor: cursor } : {};
-    const page = await notionFetch(`/data_sources/${dataSourceId}/query`, {
+    const page = await notionFetch(`/data_sources/${cleanId}/query`, {
       method: "POST",
       body: JSON.stringify(body)
     });
