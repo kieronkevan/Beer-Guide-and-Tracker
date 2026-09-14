@@ -177,7 +177,7 @@
       "dateTried": null,
       "whereTried": "",
       "tastingNote": "",
-      "currentFavourite": false,
+      "currentFavourite": true,
       "writeup": "Write-up\n\nReplace this placeholder with your own words — this is just here to show how the page-body write-up will look on the site.\n\nWhere you had it, what stood out, any memory attached to it. This is the fuller story that won't fit in the \"Tasting note\" property.",
       "photoUrl": null
     },
