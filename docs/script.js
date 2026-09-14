@@ -138,8 +138,7 @@ function renderRow(b) {
   const summary = document.createElement("summary");
   summary.innerHTML = `
     <span class="beer-name">${b.currentFavourite ? '<span class="fave">★</span>' : ""}${b.name}</span>
-    <span class="beer-meta">${b.flag || ""} ${b.country}</span>
-    <span class="beer-meta">${b.style || ""}</span>
+    <span class="beer-meta">${b.flag || ""} ${b.country}${b.style ? " · " + b.style : ""}</span>
     ${ratingHtml}
   `;
   row.appendChild(summary);
